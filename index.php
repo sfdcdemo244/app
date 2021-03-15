@@ -1,5 +1,4 @@
 
-
 <?php
    $host        = "host = ec2-54-167-168-52.compute-1.amazonaws.com";
    $port        = "port = 5432";
@@ -14,7 +13,7 @@
    }
 
    $sql =<<<EOF
-      SELECT * from Contact;
+      SELECT  FirstName,LatsName,Email,Phone from Contact;
 EOF;
 
    $ret = pg_query($db, $sql);
