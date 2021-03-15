@@ -13,7 +13,7 @@
    }
 
    $sql =<<<EOF
-      SELECT  FirstName,LatsName,Email,Phone from Contact;
+      SELECT  FirstName,LastName,Email,Phone from contact;
 EOF;
 
    $ret = pg_query($db, $sql);
