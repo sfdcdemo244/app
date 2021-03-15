@@ -13,7 +13,7 @@
    }
 
    $sql =<<<EOF
-      SELECT  FirstName,LastName,Email,Phone from contact;
+      SELECT FirstName,LastName,Email,Phone from Contact;
 EOF;
 
    $ret = pg_query($db, $sql);
@@ -25,7 +25,7 @@ EOF;
       echo "ID = ". $row[0] . "\n";
       echo "NAME = ". $row[1] ."\n";
       echo "ADDRESS = ". $row[2] ."\n";
-      echo "SALARY =  ".$row[4] ."\n\n";
+   
    }
    echo "Operation done successfully\n";
    pg_close($db);
