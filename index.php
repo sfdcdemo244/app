@@ -13,20 +13,19 @@
    }
 
    $sql =<<<EOF
-      SELECT FirstName,LastName,Email,Phone from Contact;
+      CREATE TABLE COMPANY
+      (ID INT PRIMARY KEY     NOT NULL,
+      NAME           TEXT    NOT NULL,
+      AGE            INT     NOT NULL,
+      ADDRESS        CHAR(50),
+      SALARY         REAL);
 EOF;
 
    $ret = pg_query($db, $sql);
    if(!$ret) {
       echo pg_last_error($db);
-      exit;
-   } 
-   while($row = pg_fetch_row($ret)) {
-      echo "ID = ". $row[0] . "\n";
-      echo "NAME = ". $row[1] ."\n";
-      echo "ADDRESS = ". $row[2] ."\n";
-   
+   } else {
+      echo "Table created successfully\n";
    }
-   echo "Operation done successfully\n";
    pg_close($db);
 ?>
