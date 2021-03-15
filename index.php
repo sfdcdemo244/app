@@ -1,27 +1,33 @@
+
+
 <?php
-$servername = "ec2-54-167-168-52.compute-1.amazonaws.com";
-$username = "ezmebocjiznuyh";
-$password = "f98ba2c2dcd27edfba139cabc5720a4bdc29a2fd749d6c54e11d34a95f6923a3";
-$dbname = "dfisqqcbkggoj9";
+   $host        = "host = ec2-54-167-168-52.compute-1.amazonaws.com";
+   $port        = "port = 5432";
+   $dbname      = "dbname = dfisqqcbkggoj9";
+   $credentials = "user = ezmebocjiznuyh password=f98ba2c2dcd27edfba139cabc5720a4bdc29a2fd749d6c54e11d34a95f6923a3";
 
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-  die("Connection failed: " . mysqli_connect_error());
-}
+   $db = pg_connect( "$host $port $dbname $credentials"  );
+   if(!$db) {
+      echo "Error : Unable to open database\n";
+   } else {
+      echo "Opened database successfully\n";
+   }
 
-$sql = "SELECT id, firstname, lastname FROM MyGuests";
-$result = mysqli_query($conn, $sql);
+   $sql =<<<EOF
+      SELECT * from Contact;
+EOF;
 
-if (mysqli_num_rows($result) > 0) {
-  // output data of each row
-  while($row = mysqli_fetch_assoc($result)) {
-    echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-  }
-} else {
-  echo "0 results";
-}
-
-mysqli_close($conn);
+   $ret = pg_query($db, $sql);
+   if(!$ret) {
+      echo pg_last_error($db);
+      exit;
+   } 
+   while($row = pg_fetch_row($ret)) {
+      echo "ID = ". $row[0] . "\n";
+      echo "NAME = ". $row[1] ."\n";
+      echo "ADDRESS = ". $row[2] ."\n";
+      echo "SALARY =  ".$row[4] ."\n\n";
+   }
+   echo "Operation done successfully\n";
+   pg_close($db);
 ?>
