@@ -24,8 +24,8 @@ EOF;
    while($row = pg_fetch_assoc($ret)) {
      // echo "FirstName = ". $row['FirstName'] . "<br>";
    //   echo "LastName = ". $row['LastName'] ."<br>";
-      echo "Email = ". $row['Email'] ."<br>";
-      echo "Phone =  ".$row['Phone'] ."<br>";
+      echo "Email = ". $row['email'] ."<br>";
+      echo "Phone =  ".$row['phone'] ."<br>";
    }
    echo "Operation done successfully\n";
    pg_close($db);
