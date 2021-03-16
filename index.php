@@ -21,11 +21,11 @@ EOF;
       echo pg_last_error($db);
       exit;
    } 
-   while($row = pg_fetch_row($ret)) {
-      echo "ID = ". $row[0] . "\n";
-      echo "NAME = ". $row[1] ."\n";
-      echo "ADDRESS = ". $row[2] ."\n";
-      echo "SALARY =  ".$row[4] ."\n\n";
+   while($row = pg_fetch_assoc($ret)) {
+      echo "FirstName = ". $row['FirstName'] . "<br>";
+      echo "LastName = ". $row['LastName'] ."<br>";
+      echo "Email = ". $row['Email'] ."<br>";
+      echo "Phone =  ".$row['Phone'] ."<br>";
    }
    echo "Operation done successfully\n";
    pg_close($db);
