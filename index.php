@@ -13,7 +13,7 @@
    }
 
  $sql =<<<EOF
-      SELECT * from COMPANY;
+      SELECT * from salesforce.contact;
 EOF;
 
    $ret = pg_query($db, $sql);
