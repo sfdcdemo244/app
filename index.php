@@ -22,8 +22,8 @@ EOF;
       exit;
    } 
    while($row = pg_fetch_assoc($ret)) {
-      echo "FirstName = ". $row['FirstName'] . "<br>";
-      echo "LastName = ". $row['LastName'] ."<br>";
+     // echo "FirstName = ". $row['FirstName'] . "<br>";
+   //   echo "LastName = ". $row['LastName'] ."<br>";
       echo "Email = ". $row['Email'] ."<br>";
       echo "Phone =  ".$row['Phone'] ."<br>";
    }
